@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HoaQuaSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GiaBan">
+    <Key>
+      <PropertyRef Name="MaGB" />
+    </Key>
+    <Property Name="MaGB" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MaSP" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Gia" Type="int" />
+    <Property Name="DVTinh" Type="nvarchar" MaxLength="30" />
+    <Property Name="NgayBD" Type="datetime" Nullable="false" />
+    <Property Name="NgayKT" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoaiHang">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HinhLoai" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MaLoai" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenSP" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="HinhSP" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="MType" Type="int" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="SoLuongCon" Type="int" />
+    <Property Name="Mota" Type="ntext" />
+    <Property Name="Created_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="HoaQuaSachModelStoreContainer">
+    <EntitySet Name="GiaBan" EntityType="Self.GiaBan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiHang" EntityType="Self.LoaiHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

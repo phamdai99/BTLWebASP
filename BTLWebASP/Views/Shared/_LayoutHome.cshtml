@@ -1,0 +1,499 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="~/Assets/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/lib/select2/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/lib/jquery.bxslider/jquery.bxslider.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/lib/owl.carousel/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/lib/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/lib/fancyBox/source/jquery.fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/css/green.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/css/responsive.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/client/css/style_frm_dkdn.css" />
+    <link rel="stylesheet" href="css/switcher.css">
+    <title>Eco Shop</title>
+</head>
+<body class="green">
+    <!-- HEADER -->
+    <div id="header" class="header">
+
+        <!-- MAIN HEADER -->
+        <div class="container main-header">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 logo">
+                    <a href="index.html"><img alt="Eco Shop" src="~/Assets/client/images/logo.png" /></a>
+                </div>
+                <div class="col-xs-4 col-sm-12 col-md-5 col-lg-4 header-search-box">
+                    <form class="form-inline">
+                        <div class="form-group input-serach">
+                            <input type="text" placeholder="Tìm Kiếm ...">
+                        </div>
+                        <button type="submit" class="pull-right btn-search"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 group-button-header">
+                    <a title="Compare" href="#" class="btn-compare">Compare</a>
+                    <a title="My wishlist" href="#" class="btn-heart">Heart</a>
+
+                    <div class="btn-cart" id="cart-block">
+                        <a title="SignIn" href="" data-toggle="modal" data-target="#myModal">Log In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MANIN HEADER -->
+        <!--MENU-->
+        <div id="nav-top-menu" class="nav-top-menu">
+            <div class="container">
+                <div class="row">
+                    <div id="main-menu" class="col-sm-12 main-menu">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                        <i class="fa fa-bars"></i>
+                                    </button>
+                                    <a class="navbar-brand" href="#">MENU</a>
+                                </div>
+                                <div id="navbar" class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active"><a href="Index"><span class="fa fa-home"></span> Trang chủ</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle"
+                                               data-toggle="dropdown">Sản phẩm</a>
+                                            <ul class="dropdown-menu container-fluid">
+                                                <li class="block-container">
+                                                    <ul class="block">
+                                                        <li class="link_container"><a href="product-vegetables.html">Rau quả </a></li>
+                                                        <li class="link_container"><a href="product-fruits.html">Trái cây</a></li>
+                                                        <li class="link_container"><a href="product-cereals.html">Ngũ cốc</a></li>
+                                                        <li class="link_container"><a href="product-beans.html">Đậu</a></li>
+                                                        <li class="link_container"><a href="product-nuts-seeds.html">Hạt quả hạch</a></li>
+                                                        <li class="link_container"><a href="product-spices.html">Gia vị</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li><a href="news.html">Tin Tức</a></li>
+                                        <li><a href="policy-faq.html">Chính sách & Câu hỏi thường gặp</a></li>
+                                        <li><a href="about-us.html"> Giới thiệu</a></li>
+                                        <li><a href="contact-us.html">Liên hệ</a></li>
+                                    </ul>
+                                </div><!--/.nav-collapse -->
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <!-- userinfo on top-->
+                <div id="form-search-opntop">
+                </div>
+                <!-- userinfo on top-->
+                <div id="user-info-opntop">
+                </div>
+                <!-- CART ICON ON MMENU -->
+                <div id="shopping-cart-box-ontop">
+                    <i class="fa fa-user" data-toggle="modal" data-target="#myModal"></i>
+
+                    <div class="shopping-cart-box-ontop-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header -->
+
+    <!--SLIDER  AND CONTENT-->
+    @RenderBody()
+
+    <!-- POPUP LOGIN-REGISTER -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel" style="font-weight: bold">LOGIN/REGISTER</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-7" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                                <li><a href="#Registration" data-toggle="tab">Register</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <!-- LOGIN -->
+                                <div class="tab-pane active" id="Login">
+                                    <form action="javascript:void()" name="dangnhap_from" class="form-horizontal"
+                                          id="dangnhap_from" method="post">
+                                        <div class="form-group">
+                                            <label for="email_login" class="col-sm-3 control-label">Email</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="email" class="input form-control" id="email_login"
+                                                       placeholder="Email...." />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pass_login" class="col-sm-3 control-label">Password</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="password" class="input form-control" id="pass_login"
+                                                       placeholder="Password...." />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <button class="button" type="submit" id="button-confirm">Login</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- REGISTER -->
+                                <div class="tab-pane fade" id="Registration">
+                                    <form class="form-horizontal" name="dangkytk_form" action="#" method="post"
+                                          enctype="multipart/form-data" id="dangkytk_form register">
+                                        <div class="form-group">
+                                            <label for="frm_name" class="col-sm-4 control-label">Full Name</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="text" class="input form-control" id="frm_name" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="emailtk" class="col-sm-4 control-label">Email</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="email" class="input form-control" id="emailtk" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="pass_tk" class="col-sm-4 control-label">Password</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="password" class="input form-control" id="pass_tk" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="repass_tk" class="col-sm-4 control-label">Re-password</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="password" class="input form-control" id="repass_tk" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="ngaysinh_tk" class="col-sm-4 control-label">Birth day</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="date" class="input form-control" id="ngaysinh_tk" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="gender_tk" class="col-sm-4 control-label">Gender</label>
+
+                                            <div class="col-sm-8">
+                                                <select class="input form-control" name="gioitinh" id="gender_tk">
+                                                    <option value="" checked>I am...</option>
+                                                    <option value="1">Female</option>
+                                                    <option value="0">Male</option>
+                                                    <option value="0">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="diachi" class="col-sm-4 control-label">Adress</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="text" name="diachi" class="input form-control" id="diachi_dk" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="dienthoai" class="col-sm-4 control-label">Phone number</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="text" name="dienthoai" class="input form-control" id="dienthoai_dk" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <button class="button" type="submit">Register</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="OR" class="hidden-xs">OR</div>
+                        </div>
+
+                        <!-- Facebook - Google account -->
+                        <div class="col-md-5">
+                            <div class="row text-center sign-with">
+                                <div class="social-header">Login With</div>
+                                <div class="unit social-column">
+                                    <div class="social-inner">
+                                        <div><a href=""><img src="~/Assets/client/images/fb-login-button-big.png" alt="login-facebook"></a></div>
+                                        <div><a href=""><img src="~/Assets/client/images/gg-login-button-big.png" alt="login-google"></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--EN LOGIN REGISTER-->
+    <!--PEOPLE SAY-->
+
+    <div id="owl-demo-ppsay">
+        <div class="container">
+            <div class="ppsay-title">Đánh giá của khách hàng</div>
+            <div id="customer-item-carousel" class="carousel slide hidden-sm hidden-xs" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#customer-item-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#customer-item-carousel" data-slide-to="1"></li>
+                    <li data-target="#customer-item-carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner hidden-sm hidden-xs">
+                    <div class="item active">
+                        <div class="ppsaydiv">
+                            <div class="ppsaycontent hidden-xs col-sm-6 col-md-6">
+                                <div class="ppsayavt col-md-3 col-sm-3">
+                                    <img src="~/Assets/client/images/parallax-content2-2.png" " alt="Ms. Huong Nguyen">
+                                </div>
+                                <div class="ppsayauthor col-md-9 col-sm-9">
+                                    <div class="ppsaycontentcmt">
+                                        <p style="text-align: justify"><span>“ </span>Tôi hài lòng về chất lượng sản phẩm và chất lượng dịch vụ của Eco Shop. Lời chúc tốt đẹp nhất đến cửa hàng của bạn. Tôi mong rằng có thêm nhiều sản phẩm mới tốt nhất và dịch vụ của bạn luôn bền vững.<span>”</span></p>
+                                    </div>
+                                    <p><span>Khách Hàng:</span> <span class="name">Ms. Huong Nguyen</span></p>
+                                </div>
+                            </div>
+                            <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                                <div class="ppsayavt col-md-3 col-sm-3">
+                                    <img src="~/Assets/client/images/parallax-content.png" alt="Ms. Linh Pham">
+                                </div>
+                                <div class="ppsayauthor col-md-9 col-sm-9">
+                                    <div class="ppsaycontentcmt">
+                                        <p style="text-align: justify"><span>“ </span>Tôi bận đến mức không có thời gian đi chợ. Vì vậy, mua thực phẩm trực tuyến là lựa chọn tốt nhất của tôi. Sản phẩm của bạn luôn tươi ngon. Tôi sẽ tiếp tục mua thực phẩm tại cửa hàng trực tuyến của bạn. <span>”</span></p>
+                                    </div>
+                                    <p><span>Khách Hàng:</span> <span class="name">Ms. Linh Pham</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ppsaydiv">
+                            <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                                <div class="ppsayavt col-md-3 col-sm-3">
+                                    <img src="~/Assets/client/images/parallax-content2-2.png" alt="Ms. Hoang Tran">
+                                </div>
+                                <div class="ppsayauthor col-md-9 col-sm-9">
+                                    <div class="ppsaycontentcmt">
+                                        <p style="text-align: justify"><span>“ </span> Tôi đánh giá cao chất lượng sản phẩm và dịch vụ của bạn. Bây giờ tôi thực sự tin tưởng vào thương hiệu của bạn.<span>”</span></p>
+                                    </div>
+                                    <p><span>Khách Hàng:</span> <span class="name">Ms. Hoang Tran</span></p>
+                                </div>
+                            </div>
+                            <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                                <div class="ppsayavt col-md-3 col-sm-3">
+                                    <img src="~/Assets/client/images/parallax-content.png" alt="Ms. Thu Phan">
+                                </div>
+                                <div class="ppsayauthor col-md-9 col-sm-9">
+                                    <div class="ppsaycontentcmt">
+                                        <p><span style="text-align: justify">“ </span> Tôi là một bà mẹ trẻ và phải làm việc. Tôi tốn thời gian và tiền bạc để truy cập trang web của bạn và mua sản phẩm. <span>”</span></p>
+                                    </div>
+                                    <p><span>Khách Hàng:</span> <span class="name">Ms.Thu Phan</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="ppsaydiv">
+                            <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                                <div class="ppsayavt col-md-3 col-sm-3">
+                                    <img src="~/Assets/client/images/parallax-content-2.png" alt="Ms. Hoang Tran">
+                                </div>
+                                <div class="ppsayauthor col-md-9 col-sm-9">
+                                    <div class="ppsaycontentcmt">
+                                        <p style="text-align: justify">
+                                            <span>“ </span>
+                                            Khi tôi tìm kiếm cửa hàng tự nhiên và hữu cơ, bạn bè của tôi đã giới thiệu cửa hàng của bạn cho tôi. Lần đầu tiên đến quán của bạn, tôi rất hài lòng vì sự chăm sóc khách hàng của bạn.<span>”</span>
+                                        </p>
+                                    </div>
+                                    <p><span>Khách hàng:</span> <span class="name">Ms. Lan Tran</span></p>
+                                </div>
+                            </div>
+                            <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                                <div class="ppsayavt col-md-3 col-sm-3">
+                                    <img src="~/Assets/client/images/parallax-content-1.png" alt="Ms. Trang Le">
+                                </div>
+                                <div class="ppsayauthor col-md-9 col-sm-9">
+                                    <div class="ppsaycontentcmt">
+                                        <p style="text-align: justify"><span>“ </span>Nhân viên của bạn rất thân thiện và nhiệt tình. Quán của bạn cũng sạch sẽ và đẹp. Tất nhiên, sản phẩm của bạn là chất lượng tốt nhất.<span>”</span></p>
+                                    </div>
+                                    <p><span>Khách hàng:</span> <span class="name">Trang Le</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="customer-item-carousel" class="carousel slide hidden-md hidden-lg" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#customer-item-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#customer-item-carousel" data-slide-to="1"></li>
+                    <li data-target="#customer-item-carousel" data-slide-to="2"></li>
+                    <li data-target="#customer-item-carousel" data-slide-to="3"></li>
+                    <li data-target="#customer-item-carousel" data-slide-to="4"></li>
+                    <li data-target="#customer-item-carousel" data-slide-to="5"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!--END PEOPLE SAY-->
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <!-- introduce-box -->
+            <div id="introduce-box" class="row">
+                <div class="col-md-3">
+                    <div id="address-box">
+                        <a href="#"><img src="~/Assets/client/images/logo.png" alt="logo" /></a>
+
+                        <div id="address-list">
+                            <div class="tit-name">Address:</div>
+                            <div class="tit-contain">Đường 999 Le Van Hien , Huyện Ngu Hanh Son , Thành Phố Đà Nẵng, Vietnam.</div>
+                            <div class="tit-name">Số điện thoại:</div>
+                            <div class="tit-contain">(+84) 3446.295</div>
+                            <div class="tit-name">Email:</div>
+                            <div class="tit-contain">ecoshop@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="introduce-title">
+                                CHĂM SÓC KHÁCH HÀNG
+                            </div>
+                            <ul id="introduce-support" class="introduce-list">
+                                <li> Thứ Hai - Thứ Sáu: 7am to 8pm </li>
+                                <li>Thứ Bảy & Chủ nhật: 7am to 6pm</li>
+                                <li><a href="policy-faq.html">Làm thế nào để mua hàng</a></li>
+                                <li><a href="policy-faq.html">Cách thức thanh toán </a></li>
+                                <li><a href="policy-faq.html">FAQ</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="introduce-title">Chính sách</div>
+                            <ul id="introduce-Account" class="introduce-list">
+                                <li><a href="policy-faq.html">Chính sách bảo mật</a></li>
+                                <li><a href="policy-faq.html">Chính sách thanh toán</a></li>
+                                <li><a href="policy-faq.html">Chính sách đổi trả</a></li>
+                                <li><a href="policy-faq.html">Điều khoản và điều kiện</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div id="contact-box">
+                        <div class="introduce-title">ĐĂNG KÝ VÀO BẢN TIN ECO SHOP</div>
+                        <div class="input-group" id="mail-box">
+                            <input type="text" placeholder="Địa chỉ email của bạn" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">OK</button>
+                            </span>
+                        </div><!-- /input-group -->
+                        <div class="introduce-title">Theo dõi chúng tôi</div>
+                        <!--<div class="social-link">-->
+                        <!--<a href="#"><i class="fa fa-facebook"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-pinterest-p"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-google-plus"></i></a>-->
+                        <!--<a href="#"><i class="fa fa-youtube"></i></a>-->
+                        <!--</div>-->
+                        <div class="social-link">
+                            <ul class="social-icons">
+                                <li><a class="rss" data-original-title="rss" href="#"></a></li>
+                                <li><a class="facebook" data-original-title="facebook" href="#"></a></li>
+                                <li><a class="twitter" data-original-title="twitter" href="#"></a></li>
+                                <li><a class="googleplus" data-original-title="googleplus" href="#"></a></li>
+                                <li><a class="linkedin" data-original-title="linkedin" href="#"></a></li>
+                                <li><a class="youtube" data-original-title="youtube" href="#"></a></li>
+                                <li><a class="vimeo" data-original-title="vimeo" href="#"></a></li>
+                                <li><a class="skype" data-original-title="skype" href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- /#introduce-box -->
+
+
+            <div id="footer-menu-box">
+                <p class="text-center">Copyrights &#169; 2016 Eco Shop. All Rights Reserved.</p>
+            </div><!-- /#footer-menu-box -->
+        </div>
+    </footer>
+
+    <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
+    <!-- Script-->
+
+    <script type="text/javascript" src="~/Assets/client/lib/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="~/Assets/client/lib/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="~/Assets/client/lib/fancyBox/source/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="~/Assets/client/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Assets/client/lib/select2/js/select2.min.js"></script>
+    <script type="text/javascript" src="~/Assets/client/lib/jquery.bxslider/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="~/Assets/client/lib/owl.carousel/owl.carousel.min.js"></script>
+
+
+
+    <script type="text/javascript" src="~/Assets/client/js/jquery.actual.min.js"></script>
+    <script type="text/javascript" src="~/Assets/client/js/theme-script.js"></script>
+    <script type="text/javascript" src="~/Assets/client/js/shoppingCart.js"></script>
+
+    <script type="text/javascript" src="~/Assets/client/js/layout.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            Layout.init();
+            Layout.initOWL();
+            Layout.initTwitter();
+            Layout.initImageZoom();
+            Layout.initTouchspin();
+            Layout.initUniform();
+            Layout.initSliderRange();
+        });
+    </script>
+</body>
+
+</html>
