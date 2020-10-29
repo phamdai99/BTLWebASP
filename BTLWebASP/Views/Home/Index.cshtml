@@ -3,12 +3,13 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
     <!--Sản phẩm đang giảm giá-->
     var listProductSale = (List<BTLWebASP.Models.SanPham>)ViewBag.SaleProduct;
-    <!--Sản phẩm bán chạy nhất-->
-    var listProductBestSelling = (List<BTLWebASP.Models.SanPham>)ViewBag.BestSellingProduct;
+    <!--Sản phẩm mới-->
+    var listProductNew = (List<BTLWebASP.Models.SanPham>)ViewBag.newProduct;
+    <!--Sản phẩm sắp có-->
+    var listProductComingSoon = (List<BTLWebASP.Models.SanPham>)ViewBag.comingSoonProduct;
 }
 
 <!-- Home slideder-->
-@*Trang bìa*@
 <div id="home-slider">
     <div class="container">
         <div class="row">
@@ -29,6 +30,7 @@
 </div>
 <!-- END Home slideder-->
 <!--CONTENT-->
+@*Đang giảm giá*@
 <div class="page-top">
     <div class="container">
         <div class="row">
@@ -36,6 +38,7 @@
                 <h2 class="page-heading">
                     <span class="page-heading-title"><img alt="fashion" src="~/Assets/client/images/commerce-tag.png" /> Khuyến Mãi</span>
                 </h2>
+
                 <div class="latest-deals-product">
                     <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav="true"
                         data-margin="10" data-autoplayTimeout="1000" data-autoplayHoverPause="true"
@@ -45,8 +48,11 @@
                             <li>
                                 <div class="left-block">
                                     <a>
+                                        @{
+                                            string linkImgProduct = item.HinhSP + ".jpg";
+                                        }
                                         <img class="img-responsive" alt="product"
-                                             src="@item.HinhSP" />
+                                             src="~/Assets/client/images/product/@linkImgProduct" />
                                     </a>
 
                                     <div class="quick-view">
@@ -59,18 +65,22 @@
                                            data-price="38500" data-image="vegetables/asparagus_300x300.jpg" data-product-code="AS109">Add to Cart</a>
                                     </div>
                                     <div class="price-percent-reduction2">
-                                        -30% OFF
+                                        @{
+                                            double giaM = @item.giaBans.GiaMoi;
+                                            double giaC = @item.giaBans.GiaCu;
+                                            int a = Convert.ToInt32(100 - (giaM / giaC * 100));
+                                        }
+                                        - @a % OFF
                                     </div>
                                 </div>
                                 <div class="right-block">
-                                    <h5 class="product-name"><a href="asparagus-detail.html">@item.TenSP</a></h5>
-
+                                    <h5 class="product-name"><a href="ProductDetail?maSP=@item.MaSP">@item.TenSP - @item.DVT</a></h5>
                                     <div class="content_price">
                                         <span class="price product-price">
                                             <span style="color: orangered">Giá tốt nhất:</span> @string.Format("{0:0,0}" + "đ", @item.giaBans.GiaMoi)
                                         </span>
-                                        <br><span style="color: black">Giá:</span>
-                                            <span class="price old-price">@string.Format("{0:0,0}" + "đ", @item.giaBans.GiaCu)</span>
+                                        @*<br><span style="color: black">Giá:</span>*@
+                                        <span class="price old-price">@string.Format("Giá: " + "{0:0,0}" + "đ", @item.giaBans.GiaCu)</span>
                                     </div>
                                 </div>
                             </li>
@@ -82,14 +92,14 @@
     </div>
 </div>
 
+@*Sản phẩm mới & sắp ra*@
 <div class="content-page">
     <div class="container">
-        <!--Danh mục nổi bật-->
         <div class="category-featured Vegetables">
             <nav class="navbar nav-menu show-brand">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-brand"><a href="#"> <img alt="fashion" src="~/Assets/client/images/icon_like.png" /> Siêu giảm giá </a></div>
+                    <div class="navbar-brand"><a href="#"> <img alt="fashion" src="~/Assets/client/images/icon_like.png" /> Sản phẩm mới </a></div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse">
@@ -99,26 +109,30 @@
 
             </nav>
 
-            <!--Danh sách sản phẩm bán chạy nhất-->
+            <!--Danh sách sản phẩm mới nhất-->
             <div class="product-featured clearfix">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="box-right">
                             <ul class="product-list">
-                                @foreach (var item in listProductBestSelling)
+                                @foreach (var item in listProductNew)
                                 {
                                     <li class="col-sm-4 product-item">
                                         <div class="left-block">
                                             <a>
+                                                @{
+                                                    string linkImgProduct = item.HinhSP + ".jpg";
+                                                }
                                                 <img class="img-responsive" alt="product"
-                                                     src="@Html.DisplayFor(model => item.HinhSP)" />
+                                                     src="~/Assets/client/images/product/@linkImgProduct" />
                                             </a>
 
                                             <div class="quick-view">
-                                                <a title="Add to my wishlist" class="heart" href="#"></a>
-                                                <a title="Add to compare" class="compare" href="#"></a>
-                                                <a title="Quick view" href="~/Assets/client/images/product-detail/vegetables/spinach_600x600.jpg" class="search fancybox-button"></a>
+                                                <a title="Yêu thích" class="heart" href="#"></a>
+                                                <a title="Thêm vào để so sánh" class="compare" href="#"></a>
+                                                <a title="Xem lướt qua" href="~/Assets/client/images/product-detail/vegetables/spinach_600x600.jpg" class="search fancybox-button"></a>
                                             </div>
+
                                             <div class="add-to-cart">
                                                 <a class="add-item-to-cart" title="Add to Cart" href="#" data-name="Spinach - 1kg"
                                                    data-price="55000" data-image="vegetables/spinach_300x300.jpg" data-product-code="SP109">Thêm vào giỏ hàng</a>
@@ -126,7 +140,7 @@
                                             <div class="bestseller"></div>
                                         </div>
                                         <div class="right-block">
-                                            <h5 class="product-name"><a href="ProductDetail?maSP=@item.MaSP">@item.TenSP</a></h5>
+                                            <h5 class="product-name"><a href="ProductDetail?maSP=@item.MaSP">@item.TenSP - @item.DVT</a></h5>
                                             <div class="content_price">
                                                 <span class="price product-price"><span style="color: black">Giá:</span> @string.Format("{0:0,0}" + "đ", @item.giaBans.GiaMoi)</span>
                                             </div>
@@ -138,6 +152,180 @@
                     </div>
                 </div>
             </div>
+
+            @*Danh sách sả phẩm sắp ra*@
+            <div class="category-featured Vegetables">
+                <nav class="navbar nav-menu show-brand">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-brand"><a href="#"> <img alt="fashion" src="~/Assets/client/images/icon_paper-plane.png" /> Sản phẩm sắp ra </a></div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse">
+
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+
+                </nav>
+                <div class="product-featured clearfix">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="box-right">
+                                <!--&#45;&#45-->
+                                <ul class="product-list">
+                                    @foreach (var item in listProductComingSoon)
+                                    {
+                                        <li class="col-sm-4 product-item">
+                                            <div class="left-block">
+                                                <a>
+                                                    @{
+                                                        string linkImgProduct = item.HinhSP + ".jpg";
+                                                    }
+                                                    <img class="img-responsive" alt="product"
+                                                         src="~/Assets/client/images/product/@linkImgProduct" />
+                                                </a>
+
+                                                <div class="quick-view">
+                                                    <a title="Yêu thích" class="heart" href="#"></a>
+                                                    <a title="Thêm vào để so sánh" class="compare" href="#"></a>
+                                                    <a title="Xem lướt qua" href="~/Assets/client/images/product-detail/vegetables/spinach_600x600.jpg" class="search fancybox-button"></a>
+                                                </div>
+
+                                                <div class="add-to-cart">
+                                                    <a class="add-item-to-cart" title="Add to Cart" href="#" data-name="Spinach - 1kg"
+                                                       data-price="55000" data-image="vegetables/spinach_300x300.jpg" data-product-code="SP109">Thêm vào giỏ hàng</a>
+                                                </div>
+
+                                                <div class="comingsoon"></div>
+
+                                            </div>
+                                            <div class="right-block">
+                                                <h5 class="product-name"><a href="ProductDetail?maSP=@item.MaSP">@item.TenSP - @item.DVT</a></h5>
+
+                                                <div class="content_price">
+                                                    @*<span class="price product-price"><span style="color: black">Price:</span> 85,000đ</span>*@
+                                                    <span class="price product-price"><span style="color: black">Giá:</span> @string.Format("{0:0,0}" + "đ", @item.giaBans.GiaMoi)</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end featured category -->
         </div>
     </div>
 </div>
+
+@*Nhận xét của khách hàng*@
+<!--PEOPLE SAY-->
+<div id="owl-demo-ppsay">
+    <div class="container">
+        <div class="ppsay-title">Đánh giá của khách hàng</div>
+        <div id="customer-item-carousel" class="carousel slide hidden-sm hidden-xs" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#customer-item-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#customer-item-carousel" data-slide-to="1"></li>
+                <li data-target="#customer-item-carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner hidden-sm hidden-xs">
+                <div class="item active">
+                    <div class="ppsaydiv">
+                        <div class="ppsaycontent hidden-xs col-sm-6 col-md-6">
+                            <div class="ppsayavt col-md-3 col-sm-3">
+                                <img src="~/Assets/client/images/khachhang/parallax-content2-2.png" alt="Ms. Huong Nguyen">
+                            </div>
+                            <div class="ppsayauthor col-md-9 col-sm-9">
+                                <div class="ppsaycontentcmt">
+                                    <p style="text-align: justify"><span>“ </span>Tôi hài lòng về chất lượng sản phẩm và chất lượng dịch vụ của Eco Shop. Lời chúc tốt đẹp nhất đến cửa hàng của bạn. Tôi mong rằng có thêm nhiều sản phẩm mới tốt nhất và dịch vụ của bạn luôn bền vững.<span>”</span></p>
+                                </div>
+                                <p><span>Khách Hàng:</span> <span class="name">Ms. Huong Nguyen</span></p>
+                            </div>
+                        </div>
+                        <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                            <div class="ppsayavt col-md-3 col-sm-3">
+                                <img src="~/Assets/client/images/khachhang/hungcho.png" alt="Ms. Linh Pham">
+                            </div>
+                            <div class="ppsayauthor col-md-9 col-sm-9">
+                                <div class="ppsaycontentcmt">
+                                    <p style="text-align: justify"><span>“ </span>Tôi bận đến mức không có thời gian đi chợ. Vì vậy, mua thực phẩm trực tuyến là lựa chọn tốt nhất của tôi. Sản phẩm của bạn luôn tươi ngon. Tôi sẽ tiếp tục mua thực phẩm tại cửa hàng trực tuyến của bạn. <span>”</span></p>
+                                </div>
+                                <p><span>Khách Hàng:</span> <span class="name">Nguyễn Văn Hưng</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ppsaydiv">
+                        <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                            <div class="ppsayavt col-md-3 col-sm-3">
+                                <img src="~/Assets/client/images/khachhang/parallax-content2-2.png" alt="Ms. Hoang Tran">
+                            </div>
+                            <div class="ppsayauthor col-md-9 col-sm-9">
+                                <div class="ppsaycontentcmt">
+                                    <p style="text-align: justify"><span>“ </span> Tôi đánh giá cao chất lượng sản phẩm và dịch vụ của bạn. Bây giờ tôi thực sự tin tưởng vào thương hiệu của bạn.<span>”</span></p>
+                                </div>
+                                <p><span>Khách Hàng:</span> <span class="name">Ms. Hoang Tran</span></p>
+                            </div>
+                        </div>
+                        <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                            <div class="ppsayavt col-md-3 col-sm-3">
+                                <img src="~/Assets/client/images/khachhang/parallax-content.png" alt="Ms. Thu Phan">
+                            </div>
+                            <div class="ppsayauthor col-md-9 col-sm-9">
+                                <div class="ppsaycontentcmt">
+                                    <p><span style="text-align: justify">“ </span> Tôi là một bà mẹ trẻ và phải làm việc. Tôi tốn thời gian và tiền bạc để truy cập trang web của bạn và mua sản phẩm. <span>”</span></p>
+                                </div>
+                                <p><span>Khách Hàng:</span> <span class="name">Ms.Thu Phan</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ppsaydiv">
+                        <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                            <div class="ppsayavt col-md-3 col-sm-3">
+                                <img src="~/Assets/client/images/khachhang/parallax-content-2.png" alt="Ms. Hoang Tran">
+                            </div>
+                            <div class="ppsayauthor col-md-9 col-sm-9">
+                                <div class="ppsaycontentcmt">
+                                    <p style="text-align: justify">
+                                        <span>“ </span>
+                                        Khi tôi tìm kiếm cửa hàng tự nhiên và hữu cơ, bạn bè của tôi đã giới thiệu cửa hàng của bạn cho tôi. Lần đầu tiên đến quán của bạn, tôi rất hài lòng vì sự chăm sóc khách hàng của bạn.<span>”</span>
+                                    </p>
+                                </div>
+                                <p><span>Khách hàng:</span> <span class="name">Ms. Lan Tran</span></p>
+                            </div>
+                        </div>
+                        <div class="ppsaycontent col-xs-12 col-sm-6 col-md-6">
+                            <div class="ppsayavt col-md-3 col-sm-3">
+                                <img src="~/Assets/client/images/khachhang/parallax-content-1.png" alt="Ms. Trang Le">
+                            </div>
+                            <div class="ppsayauthor col-md-9 col-sm-9">
+                                <div class="ppsaycontentcmt">
+                                    <p style="text-align: justify"><span>“ </span>Nhân viên của bạn rất thân thiện và nhiệt tình. Quán của bạn cũng sạch sẽ và đẹp. Tất nhiên, sản phẩm của bạn là chất lượng tốt nhất.<span>”</span></p>
+                                </div>
+                                <p><span>Khách hàng:</span> <span class="name">Trang Le</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="customer-item-carousel" class="carousel slide hidden-md hidden-lg" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#customer-item-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#customer-item-carousel" data-slide-to="1"></li>
+                <li data-target="#customer-item-carousel" data-slide-to="2"></li>
+                <li data-target="#customer-item-carousel" data-slide-to="3"></li>
+                <li data-target="#customer-item-carousel" data-slide-to="4"></li>
+                <li data-target="#customer-item-carousel" data-slide-to="5"></li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--END PEOPLE SAY-->

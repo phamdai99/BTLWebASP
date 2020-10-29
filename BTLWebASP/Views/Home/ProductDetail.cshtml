@@ -2,6 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    @*var productDetail = (BTLWebASP.Models.SanPham)ViewBag.detailProduct;*@
 }
 
 <div class="columns-container">
@@ -43,20 +44,24 @@
                             <!-- product-imge-->
                             <div class="product-image">
                                 <div class="product-full">
-                                    <img id="product-zoom" src="@Model.HinhSP"
+                                    @{
+                                        string linkImgProduct = Model.HinhSP + ".jpg";
+                                    }
+                                    <img id="product-zoom" src="~/Assets/client/images/product/@linkImgProduct"
                                          data-zoom-image="images/product-detail/cereals/barley_600x600.jpg" />
                                 </div>
                                 <div class="product-img-thumb" id="gallery_01">
-                                    <ul class="owl-carousel" data-items="3" data-nav="true" data-dots="false"
-                                        data-margin="20" data-loop="true">
+                                    <ul class="owl-carousel" data-items="3" data-nav="true" data-dots="false" data-margin="20" data-loop="true">
                                         <li>
                                             <a href="#"
-                                               data-image="images/product-detail/cereals/barley_600x600.jpg"
-                                               data-zoom-image="images/product-detail/cereals/barley_600x600.jpg">
+                                               data-image="images/product-detail/nuts/walnut_600x600.jpg"
+                                               data-zoom-image="images/product-detail/nuts/walnut_600x600.jpg">
                                                 <img id="product-zoom"
-                                                     src="@Model.HinhSP" />
+                                                     src="images/product-detail/nuts/walnut_300x300.jpg" />
                                             </a>
                                         </li>
+
+
                                     </ul>
                                 </div>
                             </div>
@@ -76,11 +81,39 @@
                             <div class="info-orther">
                                 <p>Mã sản phẩm: @Model.MaSP</p>
 
-                                <p>Trạng thái: <span class="in-stock">Trong kho</span></p>
+                                @{
+                                    String temp = "";
+                                    if (Model.MType == 1)
+                                    {
+                                        temp = "Sắp bán";
+                                    }
+                                    else
+                                    {
+                                        temp = "Trong kho";
+                                    }
+                                }
+                                <p>Trạng thái: <span class="in-stock">@temp</span></p>
 
                             </div>
                             <div class="product-desc">
-                                @Model.Mota
+                                @{
+                                    string[] a = Model.Mota.ToString().Split(new string[] { " " }, StringSplitOptions.None);
+                                    string tam = "";
+                                    if (a.Length < 12)
+                                    {
+                                        tam = Model.Mota;
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; i < 40; i++)
+                                        {
+                                            tam += a[i] + " ";
+                                        }
+                                        tam += "...";
+
+                                    }
+                                }
+                                @tam
                             </div>
                             <div class="form-option">
 
@@ -111,12 +144,12 @@
                                 <div class="button-group">
                                     <a class="wishlist" href="#">
                                         <i class="fa fa-heart-o"></i>
-                                        <br>Heart
+                                        <br>Yêu thích
                                     </a>
                                     <a class="compare" href="#">
                                         <i class="fa fa-signal"></i>
                                         <br>
-                                        Compare
+                                        So sánh
                                     </a>
                                 </div>
                             </div>
@@ -138,11 +171,7 @@
                         <div class="tab-container">
                             <div id="product-detail" class="tab-panel active">
                                 <p>
-                                    Barley (Hordeum vulgare L.), a member of the grass family, is a major cereal grain
-                                    grown in temperate climates globally. It was one of the first cultivated grains,
-                                    particularly in Eurasia as early as 13,000 years ago. Barley has also been used as
-                                    animal fodder, as a source of fermentable material for beer and certain distilled
-                                    beverages, and as a component of various health foods.
+                                    @Model.Mota
                                 </p>
                             </div>
                             <div id="comment" class="tab-panel">
@@ -151,311 +180,53 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ./tab product -->
+
 
                     <!-- SẢN PHẨM TƯƠNG TỰ -->
-                    <div class="page-product-box">
-                        <h2 class="page-heading">
-                            <span class="page-heading-title"> SẢN PHẨM TƯƠNG TỰ</span>
-                        </h2>
-                        <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav="true"
-                            data-margin="30" data-autoplayTimeout="1000" data-autoplayHoverPause="true"
-                            data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
-                            <li>
-                                <div class="product-container">
-                                    <div class="left-block">
-                                        <a>
-                                            <img class="img-responsive" alt="product"
-                                                 src="images/product-detail/vegetables/broccoli_300x300.jpg" />
-                                        </a>
+                    @*<div class="page-product-box">
+                            <h2 class="page-heading">
+                                <span class="page-heading-title"> SẢN PHẨM TƯƠNG TỰ</span>
+                            </h2>
+                            <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav="true"
+                                data-margin="30" data-autoplayTimeout="1000" data-autoplayHoverPause="true"
+                                data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
+                                <li>
+                                    <div class="product-container">
+                                        <div class="left-block">
+                                            <a>
+                                                <img class="img-responsive" alt="product"
+                                                     src="images/product-detail/vegetables/broccoli_300x300.jpg" />
+                                            </a>
 
-                                        <div class="quick-view">
-                                            <a title="Add to my wishlist" class="heart" href="#"></a>
-                                            <a title="Add to compare" class="compare" href="#"></a>
-                                            <a title="Quick view"
-                                               href="images/product-detail/vegetables/broccoli_600x600.jpg"
-                                               class="search fancybox-button"></a>
+                                            <div class="quick-view">
+                                                <a title="Add to my wishlist" class="heart" href="#"></a>
+                                                <a title="Add to compare" class="compare" href="#"></a>
+                                                <a title="Quick view"
+                                                   href="images/product-detail/vegetables/broccoli_600x600.jpg"
+                                                   class="search fancybox-button"></a>
+                                            </div>
+                                            <div class="add-to-cart">
+                                                <a class="add-item-to-cart" title="Add to Cart" href="#"
+                                                   data-name="Broccoli - 1kg"
+                                                   data-price="85000" data-image="broccoli_300x300.jpg"
+                                                   data-product-code="BC109">Add to Cart</a>
+                                            </div>
                                         </div>
-                                        <div class="add-to-cart">
-                                            <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                               data-name="Broccoli - 1kg"
-                                               data-price="85000" data-image="broccoli_300x300.jpg"
-                                               data-product-code="BC109">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="right-block">
-                                        <h5 class="product-name"><a href="#">Broccoli - 1kg</a></h5>
+                                        <div class="right-block">
+                                            <h5 class="product-name"><a href="#">Broccoli - 1kg</a></h5>
 
-                                        <div class="content_price">
-                                            <span class="price product-price"><span style="color: black">Price:</span> 85,000đ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-container">
-                                    <div class="left-block">
-                                        <a>
-                                            <img class="img-responsive" alt="product"
-                                                 src="images/product-detail/vegetables/cucumber_300x300.jpg" />
-                                        </a>
-
-                                        <div class="quick-view">
-                                            <a title="Add to my wishlist" class="heart" href="#"></a>
-                                            <a title="Add to compare" class="compare" href="#"></a>
-                                            <a title="Quick view"
-                                               href="images/product-detail/vegetables/cucumber_600x600.jpg"
-                                               class="search fancybox-button"></a>
-                                        </div>
-                                        <div class="add-to-cart">
-                                            <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                               data-name="Cucumber - 1kg"
-                                               data-price="25000" data-image="cucumber_300x300.jpg"
-                                               data-product-code="CC109">Add to Cart</a>
+                                            <div class="content_price">
+                                                <span class="price product-price"><span style="color: black">Price:</span> 85,000đ</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="right-block">
-                                        <h5 class="product-name"><a href="#">Cucumber - 1kg</a></h5>
-
-                                        <div class="content_price">
-                                            <span class="price product-price"><span style="color: black">Price:</span> 25,000đ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-container">
-                                    <div class="left-block">
-                                        <a>
-                                            <img class="img-responsive" alt="product"
-                                                 src="images/product-detail/vegetables/potato_300x300.jpg" />
-                                        </a>
-
-                                        <div class="quick-view">
-                                            <a title="Add to my wishlist" class="heart" href="#"></a>
-                                            <a title="Add to compare" class="compare" href="#"></a>
-                                            <a title="Quick view"
-                                               href="images/product-detail/vegetables/potato_600x600.jpg"
-                                               class="search fancybox-button"></a>
-                                        </div>
-                                        <div class="add-to-cart">
-                                            <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                               data-name="Potatos - 1kg"
-                                               data-price="55000" data-image="potato_300x300.jpg"
-                                               data-product-code="GPL109">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="right-block">
-                                        <h5 class="product-name"><a href="#">Potatos - 1kg</a></h5>
-
-                                        <div class="content_price">
-                                            <span class="price product-price"><span style="color: black">Price:</span> 55,000đ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-container">
-                                    <div class="left-block">
-                                        <a>
-                                            <img class="img-responsive" alt="product"
-                                                 src="images/product-detail/vegetables/sweetpotato_300x300.jpg" />
-                                        </a>
-
-                                        <div class="quick-view">
-                                            <a title="Add to my wishlist" class="heart" href="#"></a>
-                                            <a title="Add to compare" class="compare" href="#"></a>
-                                            <a title="Quick view"
-                                               href="images/product-detail/vegetables/sweetpotato_600x600.jpg"
-                                               class="search fancybox-button"></a>
-                                        </div>
-                                        <div class="add-to-cart">
-                                            <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                               data-name="Sweet Potatos - 1kg"
-                                               data-price="22000" data-image="sweetpotato_300x300.jpg" "
-                                               data-product-code="SWP109">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="right-block">
-                                        <h5 class="product-name"><a href="#">Sweet Potatos - 1kg</a></h5>
-
-                                        <div class="content_price">
-                                            <span class="price product-price"><span style="color: black">Price:</span> 22,000đ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="left-block">
-                                    <a>
-                                        <img class="img-responsive" alt="product"
-                                             src="images/product-detail/vegetables/pokchoy_300x300.jpg" />
-                                    </a>
-
-                                    <div class="quick-view">
-                                        <a title="Add to my wishlist" class="heart" href="#"></a>
-                                        <a title="Add to compare" class="compare" href="#"></a>
-                                        <a title="Quick view"
-                                           href="images/product-detail/vegetables/pokchoy_600x600.jpg"
-                                           class="search fancybox-button"></a>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                           data-name="Pokchoy - 1kg"
-                                           data-price="55000" data-image="pokchoy_300x300.jpg"
-                                           data-product-code="PC109">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <div class="right-block">
-                                    <h5 class="product-name"><a href="#">Pokchoy - 1kg</a></h5>
-
-                                    <div class="content_price">
-                                        <span class="price product-price"><span style="color: black">Price:</span> 55,000đ</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-        
-                    <!-- BÁN CHẠY NHẤT -->
-                    <div class="page-product-box">
-                        <h2 class="page-heading">
-                            <span class="page-heading-title">BÁN CHẠY NHẤT</span>
-                        </h2>
-                        <ul class="product-list owl-carousel" data-dots="false" data-loop="true" data-nav="true"
-                            data-margin="30" data-autoplayTimeout="1000" data-autoplayHoverPause="true"
-                            data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":3}}'>
-                            <li>
-                                <div class="left-block">
-                                    <a>
-                                        <img class="img-responsive" alt="product"
-                                             src="images/product-detail/vegetables/spinach_300x300.jpg" />
-                                    </a>
-
-                                    <div class="quick-view">
-                                        <a title="Add to my wishlist" class="heart" href="#"></a>
-                                        <a title="Add to compare" class="compare" href="#"></a>
-                                        <a title="Quick view"
-                                           href="images/product-detail/vegetables/spinach_600x600.jpg"
-                                           class="search fancybox-button"></a>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                           data-name="Spinach - 1kg"
-                                           data-price="55000" data-image="spinach_300x300.jpg"
-                                           data-product-code="SP109">Add to Cart</a>
-                                    </div>
-                                    <div class="bestseller"></div>
-                                </div>
-                                <div class="right-block">
-                                    <h5 class="product-name"><a href="#">Spinach - 1kg</a></h5>
-
-                                    <div class="content_price">
-                                        <span class="price product-price"><span style="color: black">Price:</span> 55,000đ</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-container">
-                                    <div class="left-block">
-                                        <a>
-                                            <img class="img-responsive" alt="product"
-                                                 src="images/product-detail/fruits/avocado_300x300.jpg" />
-                                        </a>
-
-                                        <div class="quick-view">
-                                            <a title="Add to my wishlist" class="heart" href="#"></a>
-                                            <a title="Add to compare" class="compare" href="#"></a>
-                                            <a title="Quick view"
-                                               href="images/product-detail/fruits/avocado_600x600.jpg"
-                                               class="search fancybox-button"></a>
-                                        </div>
-                                        <div class="add-to-cart">
-                                            <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                               data-name="Avocado - 1kg"
-                                               data-price="52000" data-image="avocado_300x300.jpg"
-                                               data-product-code="AC042">Add to Cart</a>
-                                        </div>
-                                        <div class="bestseller"></div>
-                                    </div>
-                                    <div class="right-block">
-                                        <h5 class="product-name"><a href="#">Avocado - 1kg</a></h5>
-
-                                        <div class="content_price">
-                                            <span class="price product-price"><span style="color: black">Price:</span> 52,000</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-container">
-                                    <div class="left-block">
-                                        <a>
-                                            <img class="img-responsive" alt="product"
-                                                 src="images/product-detail/cereals/ricewhite_300x300.jpg" />
-                                        </a>
-
-                                        <div class="quick-view">
-                                            <a title="Add to my wishlist" class="heart" href="#"></a>
-                                            <a title="Add to compare" class="compare" href="#"></a>
-                                            <a title="Quick view"
-                                               href="images/product-detail/cereals/ricewhite_600x600.jpg"
-                                               class="search fancybox-button"></a>
-                                        </div>
-                                        <div class="add-to-cart">
-                                            <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                               data-name="White Rice - 1kg"
-                                               data-price="25000" data-image="ricewhite_300x300.jpg"
-                                               data-product-code="WR109">Add to Cart</a>
-                                        </div>
-                                        <div class="bestseller"></div>
-                                    </div>
-                                    <div class="right-block">
-                                        <h5 class="product-name"><a href="#">White Rice - 1kg</a></h5>
-
-                                        <div class="content_price">
-                                            <span class="price product-price"><span style="color: black">Price:</span> 25,000đ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="left-block">
-                                    <a>
-                                        <img class="img-responsive" alt="product"
-                                             src="images/product-detail/beans/soybeans_300x300.jpg" />
-                                    </a>
-
-                                    <div class="quick-view">
-                                        <a title="Add to my wishlist" class="heart" href="#"></a>
-                                        <a title="Add to compare" class="compare" href="#"></a>
-                                        <a title="Quick view" href="images/product-detail/beans/soybeans_300x300.jpg"
-                                           class="search fancybox-button"></a>
-                                    </div>
-                                    <div class="add-to-cart">
-                                        <a class="add-item-to-cart" title="Add to Cart" href="#"
-                                           data-name="Soy Beans - 1kg"
-                                           data-price="60000" data-image="soybeans_300x300.jpg"
-                                           data-product-code="SBD042">Add to Cart</a>
-                                    </div>
-                                    <div class="bestseller"></div>
-                                </div>
-                                <div class="right-block">
-                                    <h5 class="product-name"><a href="#">Soy Beans - 1kg</a></h5>
-
-                                    <div class="content_price">
-                                        <span class="price product-price"><span style="color: black">Price:</span> 60,000</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- ./box product -->
+                                </li>
+                            </ul>
+                        </div>*@
                 </div>
                 <!-- Product -->
             </div>
             <!-- ./ Center colunm -->
-
         </div>
         <!-- ./row-->
     </div>

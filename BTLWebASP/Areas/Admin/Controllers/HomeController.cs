@@ -13,5 +13,10 @@ namespace BTLWebASP.Areas.Admin.Controllers
         {
             return View();
         }
+
+        //public ActionResult getAllProduct()
+        //{
+        //    return View(db.SanPhams.ToList());
+        //}
     }
 }

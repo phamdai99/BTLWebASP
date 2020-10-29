@@ -9,7 +9,7 @@ namespace BTLWebASP.Models
     {
         public string MaGB { get; set; }
         public string MaSP { get; set; }
-        public Nullable<int> GiaMoi { get; set; }
+        public int GiaMoi { get; set; }
         public int GiaCu { get; set; }
         public string DVTinh { get; set; }
         public System.DateTime NgayBD { get; set; }

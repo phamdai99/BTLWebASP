@@ -11,6 +11,8 @@ namespace BTLWebASP.Models
         public string MaLoai { get; set; }
         public string TenSP { get; set; }
         public string HinhSP { get; set; }
+
+        public string DVT { get; set; }
         public Nullable<int> MType { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> SoLuongCon { get; set; }

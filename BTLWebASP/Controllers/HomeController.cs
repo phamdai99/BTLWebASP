@@ -1,5 +1,6 @@
 ﻿using BTLWebASP.Models;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Web.Mvc;
 
 namespace BTLWebASP.Controllers
@@ -12,24 +13,41 @@ namespace BTLWebASP.Controllers
         {
             //đang giảm giá
             ViewBag.SaleProduct = getSaleProducts();
-            //
-            ViewBag.BestSellingProduct = getBestSellingProducts();
+            //Sản phẩm mới
+            ViewBag.newProduct = getNewProducts();
+            //Sản phẩm sắp có
+            ViewBag.comingSoonProduct = getComingSoonProducts();
             return View();
         }
 
+        //lấy sản phẩm đang giảm giá
         public List<SanPham> getSaleProducts()
         {
-            return sanPhamModel.getSPSale(2);
+            return sanPhamModel.getProductSale(2);
         }
 
-        public List<SanPham> getBestSellingProducts()
+        //lấy 10 sản phẩm mới nhất theo kiểu sp: 1= sắp có, 2=đã có
+        public List<SanPham> getNewProducts()
         {
-            return sanPhamModel.getAllSP(2);
+            return sanPhamModel.getNewProduct(2);
         }
 
-        public ActionResult ProductDetail()
+
+        //lấy danh sách sản phẩm sắp có
+        public List<SanPham> getComingSoonProducts()
         {
-            return View();
+            return sanPhamModel.getCommingSoonProduct(1);
+        }
+
+        public ActionResult ProductDetail(string maSP)
+        {
+            //ViewBag.detailProduct = getDetailProduct(maSP);
+            return View(getDetailProduct(maSP));
+        }
+
+        public SanPham getDetailProduct(string maSP)
+        {
+            return sanPhamModel.getDetailProduct(maSP);
         }
 
 
@@ -42,7 +60,6 @@ namespace BTLWebASP.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

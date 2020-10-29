@@ -5868,7 +5868,7 @@ Social Icons
 .product-list li .bestseller {
     width: 60px;
     height: 60px;
-    background: url("../images/best-seller.png") no-repeat center center;
+    /*background: url("../images/best-seller.png") no-repeat center center;*/
     position: absolute;
     top: 0px;
     right: 0px;
@@ -5879,7 +5879,7 @@ Social Icons
 .product-list li .comingsoon {
     width: 50px;
     height: 50px;
-    background: url("../images/coming-soon-stickers.png") no-repeat center center;
+    /*background: url("../images/coming-soon-stickers.png") no-repeat center center;*/
     position: absolute;
     top: 0px;
     right: 0px;

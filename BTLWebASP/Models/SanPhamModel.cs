@@ -15,7 +15,7 @@ namespace BTLWebASP.Models
         //      2:hàng đã bán
 
         //lấy sản phẩm đang giảm giá
-        public List<SanPham> getSPSale(int type)
+        public List<SanPham> getProductSale(int type)
         {
             DataTable dt = db.layDeLieu("select * from SanPham where MType='" + type + "'");
             List<SanPham> li = new List<SanPham>();
@@ -30,11 +30,12 @@ namespace BTLWebASP.Models
                     sp.MaLoai = dr[1].ToString();
                     sp.TenSP = dr[2].ToString();
                     sp.HinhSP = dr[3].ToString();
-                    sp.MType = int.Parse(dr[4].ToString());
-                    sp.SoLuong = int.Parse(dr[5].ToString());
-                    sp.SoLuongCon = int.Parse(dr[6].ToString());
-                    sp.Mota = dr[7].ToString();
-                    sp.Created_at = DateTime.Parse(dr[8].ToString());
+                    sp.DVT = dr[4].ToString();
+                    sp.MType = int.Parse(dr[5].ToString());
+                    sp.SoLuong = int.Parse(dr[6].ToString());
+                    sp.SoLuongCon = int.Parse(dr[7].ToString());
+                    sp.Mota = dr[8].ToString();
+                    sp.Created_at = DateTime.Parse(dr[9].ToString());
                     sp.giaBans = giaBanModel.getNewGiaBan(sp.MaSP);
                     li.Add(sp);
                 }
@@ -43,7 +44,33 @@ namespace BTLWebASP.Models
             return li;
         }
 
-        public List<SanPham> getAllSP(int type)
+        //lấy 10 sản phẩm mới nhất
+        public List<SanPham> getNewProduct(int type)
+        {
+            //SELECT top 10 * FROM SanPham order by Created_at DESC
+            DataTable dt = db.layDeLieu("SELECT top 10 * FROM SanPham where MType='" + type + "' order by Created_at DESC");
+            List<SanPham> li = new List<SanPham>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                SanPham sp = new SanPham();
+                sp.MaSP = dr[0].ToString();
+                sp.MaLoai = dr[1].ToString();
+                sp.TenSP = dr[2].ToString();
+                sp.HinhSP = dr[3].ToString();
+                sp.DVT = dr[4].ToString();
+                sp.MType = int.Parse(dr[5].ToString());
+                sp.SoLuong = int.Parse(dr[6].ToString());
+                sp.SoLuongCon = int.Parse(dr[7].ToString());
+                sp.Mota = dr[8].ToString();
+                sp.Created_at = DateTime.Parse(dr[9].ToString());
+                sp.giaBans = giaBanModel.getGiaBan(sp.MaSP);
+                li.Add(sp);
+            }
+            return li;
+        }
+
+        //lấy 10 sản phẩm mới nhất
+        public List<SanPham> getCommingSoonProduct(int type)
         {
             DataTable dt = db.layDeLieu("select * from SanPham where MType='" + type + "'");
             List<SanPham> li = new List<SanPham>();
@@ -54,30 +81,33 @@ namespace BTLWebASP.Models
                 sp.MaLoai = dr[1].ToString();
                 sp.TenSP = dr[2].ToString();
                 sp.HinhSP = dr[3].ToString();
-                sp.MType = int.Parse(dr[4].ToString());
-                sp.SoLuong = int.Parse(dr[5].ToString());
-                sp.SoLuongCon = int.Parse(dr[6].ToString());
-                sp.Mota = dr[7].ToString();
-                sp.Created_at = DateTime.Parse(dr[8].ToString());
+                sp.DVT = dr[4].ToString();
+                sp.MType = int.Parse(dr[5].ToString());
+                sp.SoLuong = int.Parse(dr[6].ToString());
+                sp.SoLuongCon = int.Parse(dr[7].ToString());
+                sp.Mota = dr[8].ToString();
+                sp.Created_at = DateTime.Parse(dr[9].ToString());
                 sp.giaBans = giaBanModel.getGiaBan(sp.MaSP);
                 li.Add(sp);
             }
             return li;
         }
 
-        public SanPham getSP(string id)
+        public SanPham getDetailProduct(string id)
         {
-            DataTable dt = db.layDeLieu("select * from SanPham where masp='" + id + "'");
+            DataTable dt = db.layDeLieu("SELECT * FROM SanPham WHERE maSP='" + id + "'");
             SanPham sp = new SanPham();
             sp.MaSP = dt.Rows[0][0].ToString();
             sp.MaLoai = dt.Rows[0][1].ToString();
             sp.TenSP = dt.Rows[0][2].ToString();
             sp.HinhSP = dt.Rows[0][3].ToString();
-            sp.MType = int.Parse(dt.Rows[0][4].ToString());
-            sp.SoLuong = int.Parse(dt.Rows[0][5].ToString());
-            sp.SoLuongCon = int.Parse(dt.Rows[0][6].ToString());
-            sp.Mota = dt.Rows[0][7].ToString();
-            sp.Created_at = DateTime.Parse(dt.Rows[0][7].ToString());
+            sp.DVT = dt.Rows[0][4].ToString();
+            sp.MType = int.Parse(dt.Rows[0][5].ToString());
+            sp.SoLuong = int.Parse(dt.Rows[0][6].ToString());
+            sp.SoLuongCon = int.Parse(dt.Rows[0][7].ToString());
+            sp.Mota = dt.Rows[0][8].ToString();
+            sp.Created_at = DateTime.Parse(dt.Rows[0][9].ToString());
+            sp.giaBans = giaBanModel.getGiaBan(sp.MaSP);
             return sp;
         }
     }
