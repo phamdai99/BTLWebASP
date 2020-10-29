@@ -93,6 +93,29 @@ namespace BTLWebASP.Models
             return li;
         }
 
+        //lấy tất cả sản phẩm
+        public List<SanPham> getAllProduct()
+        {
+            DataTable dt = db.layDeLieu("select * from SanPham");
+            List<SanPham> li = new List<SanPham>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                SanPham sp = new SanPham();
+                sp.MaSP = dr[0].ToString();
+                sp.MaLoai = dr[1].ToString();
+                sp.TenSP = dr[2].ToString();
+                sp.HinhSP = dr[3].ToString();
+                sp.DVT = dr[4].ToString();
+                sp.MType = int.Parse(dr[5].ToString());
+                sp.SoLuong = int.Parse(dr[6].ToString());
+                sp.SoLuongCon = int.Parse(dr[7].ToString());
+                sp.Mota = dr[8].ToString();
+                sp.Created_at = DateTime.Parse(dr[9].ToString());
+                li.Add(sp);
+            }
+            return li;
+        }
+
         public SanPham getDetailProduct(string id)
         {
             DataTable dt = db.layDeLieu("SELECT * FROM SanPham WHERE maSP='" + id + "'");
@@ -109,6 +132,10 @@ namespace BTLWebASP.Models
             sp.Created_at = DateTime.Parse(dt.Rows[0][9].ToString());
             sp.giaBans = giaBanModel.getGiaBan(sp.MaSP);
             return sp;
+        }
+        public void addSp(SanPham item)
+        {
+            db.ghiDuLieu("INSERT INTO SanPham (MaSP,MaLoai,TenSP,HinhSP,DVT,MType,SoLuong,SoLuongCon,Mota) VALUES('" + item.MaSP + "','" + item.MaLoai + "',N'" + item.TenSP + "','" + item.HinhSP + "','" + item.DVT + "'," + item.MType + "," + item.SoLuong + "," + item.SoLuongCon + ",N'" + item.Mota + "');");
         }
     }
 }

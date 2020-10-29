@@ -164,6 +164,7 @@
     <Content Include="Assets\admin\js\demo\chart-bar-demo.js" />
     <Content Include="Assets\admin\js\demo\chart-pie-demo.js" />
     <Content Include="Assets\admin\js\demo\datatables-demo.js" />
+    <Content Include="Assets\admin\js\jquery-dataTables.min.js" />
     <Content Include="Assets\admin\js\sb-admin-2.js" />
     <Content Include="Assets\admin\js\sb-admin-2.min.js" />
     <Content Include="Assets\admin\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -2478,6 +2479,7 @@
     <Content Include="Assets\admin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\admin\vendor\jquery\jquery.min.map" />
     <Content Include="Assets\admin\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Areas\Admin\Views\Home\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
