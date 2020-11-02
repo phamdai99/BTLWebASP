@@ -1,0 +1,93 @@
+﻿@model BTLWebASP.Models.SanPham
+@{
+    ViewBag.Title = "UpdateProduct";
+}
+
+<h4 style="margin-left:15px">CẬP NHẬT SẢN PHẨM</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="maSanPham" name="maSanPham" class="form-control" value="@Model.MaSP" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaLoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="maLoai" name="maLoai" class="form-control" value="@Model.MaLoai"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="tenSanPham" name="tenSanPham" class="form-control" value="@Model.TenSP"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="hinhAnh" name="hinhAnh" class="form-control" value="@Model.HinhSP"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DVT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="dvt" name="dvt" class="form-control" value="@Model.DVT"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="trangThai" name="trangThai" class="form-control" value="@Model.MType"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="soLuong" name="soLuong" class="form-control"value="@Model.SoLuong" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoLuongCon, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="soLuongCon" name="soLuongCon" class="form-control" value="@Model.SoLuongCon"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mota, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="moTa" name="moTa" class="form-control" value="@Model.Mota"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input style="background-color:moccasin" name="call" type="submit" value="Cập nhật" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="margin-left:15px">
+    @Html.ActionLink("Quay lại danh sách", "Update")
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

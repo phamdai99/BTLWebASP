@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BTLWebASP.Models.LoaiHang>
+@{
+    ViewBag.Title = "Delete";
+}
+
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HinhLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created_at)
+            </th>
+            <th>
+                Chức năng
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaLoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenLoai)
+                </td>
+                <td>
+                    @{
+                        string linkImgProduct = item.HinhLoai + ".jpg";
+                    }
+                    <img src="~/Assets/client/images/product/@linkImgProduct" style="height:100px; width:100px" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created_at)
+                </td>
+                <td>
+                    @Html.ActionLink("Xóa", "DeleteLoaiHang", new { maLoai = item.MaLoai, tenLoai = item.TenLoai, hinhLoai = item.HinhLoai })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a href="Index">
+        Quay lại danh sách
+    </a>
+</div>
+
+@section scripts
+{
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="~/Assets/admin/js/jquery-dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+}

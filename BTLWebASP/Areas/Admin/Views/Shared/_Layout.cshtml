@@ -63,9 +63,11 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         @* <h6 class="collapse-header">Custom Components:</h6>*@
-                        <a class="collapse-item" href="Create">Thêm sản phẩm</a>
-                        @*<a class="collapse-item" href="Edit?id=SP02">Cập nhật sản phẩm</a>
-                            <a class="collapse-item" href="cards.html">Xóa sản phẩm</a>*@
+
+                        <a class="collapse-item" href="/Admin/Home/Index">Danh sách sản phẩm</a>
+                        <a class="collapse-item" href="/Admin/Home/CreateProduct">Thêm sản phẩm</a>
+                        <a class="collapse-item" href="/Admin/Home/Update">Cập nhật sản phẩm</a>
+                        <a class="collapse-item" href="/Admin/Home/Delete">Xóa sản phẩm</a>
                     </div>
                 </div>
             </li>
@@ -79,9 +81,10 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         @*<h6 class="collapse-header">Custom Utilities:</h6>*@
-                        <a class="collapse-item" href="#">Thêm loại sản phẩm</a>
-                        <a class="collapse-item" href="#">Cập nhật loại sản phẩm</a>
-                        <a class="collapse-item" href="#">Xóa loại sản phẩm</a>
+                        <a class="collapse-item" href="/Admin/LoaiHang/Index">Danh sách loại hàng</a>
+                        <a class="collapse-item" href="/Admin/LoaiHang/CreateLoaiHang">Thêm loại hàng</a>
+                        <a class="collapse-item" href="/Admin/LoaiHang/Update">Cập nhật loại hàng</a>
+                        <a class="collapse-item" href="/Admin/LoaiHang/Delete">Xóa loại hàng</a>
                     </div>
                 </div>
             </li>
@@ -93,9 +96,10 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Thêm giá bán</a>
-                        <a class="collapse-item" href="#">Cập nhật giá bán</a>
-                        <a class="collapse-item" href="#">Xóa giá bán</a>
+                        <a class="collapse-item" href="/Admin/GiaBan/Index">Danh sách giá bán</a>
+                        <a class="collapse-item" href="/Admin/GiaBan/CreateGiaBan">Thêm giá bán</a>
+                        <a class="collapse-item" href="/Admin/GiaBan/Update">Cập nhật giá bán</a>
+                        <a class="collapse-item" href="Delete">Xóa giá bán</a>
                     </div>
                 </div>
             </li>
@@ -137,7 +141,7 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Tìm kiếm sản phẩm..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>

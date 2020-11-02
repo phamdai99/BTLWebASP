@@ -50,6 +50,18 @@ namespace BTLWebASP.Controllers
             return sanPhamModel.getDetailProduct(maSP);
         }
 
+        //TÌM KIẾM SẢN PHẨM
+        public ActionResult searchProducts(string keyword)
+        {
+            //ViewBag.detailProduct = getDetailProduct(maSP);
+            Debug.WriteLine(keyword);
+            return View(searchProduct(keyword));
+        }
+
+        public List<SanPham> searchProduct(string productName)
+        {
+            return sanPhamModel.searchProduct(productName);
+        }
 
         public ActionResult About()
         {

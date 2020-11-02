@@ -1,0 +1,95 @@
+﻿@model BTLWebASP.Models.SanPham
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Thông tin chi tiết sản phẩm</h2>
+
+<div>
+
+    <hr />
+
+    <div>
+        @{
+            string linkImgProduct = Model.HinhSP + ".jpg";
+        }
+        <img src="~/Assets/client/images/product/@linkImgProduct" style="height:250px; width:250px" />
+    </div>
+
+    <br />
+
+    <div>
+        <p style="display:inline-block; width:150px">
+            @Html.DisplayNameFor(model => model.MaLoai)
+        </p>
+
+        <h6 style="display:inline-block">
+            @Html.DisplayFor(model => model.MaLoai)
+        </h6>
+    </div>
+
+    <div>
+        <p style="display:inline-block; width:150px">
+            @Html.DisplayNameFor(model => model.TenSP)
+        </p>
+
+        <h6 style="display:inline-block">
+            @Html.DisplayFor(model => model.TenSP)
+        </h6>
+    </div>
+
+    <div>
+        <p style="display:inline-block; width:150px">
+            @Html.DisplayNameFor(model => model.MType)
+        </p>
+
+        <h6 style="display:inline-block">
+            @Html.DisplayFor(model => model.MType)
+        </h6>
+    </div>
+
+    <div>
+        <p style="display:inline-block; width:150px">
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </p>
+
+        <h6 style="display:inline-block">
+            @Html.DisplayFor(model => model.SoLuong)
+        </h6>
+    </div>
+
+    <div>
+        <p style="display:inline-block; width:150px">
+            @Html.DisplayNameFor(model => model.SoLuongCon)
+        </p>
+
+        <h6 style="display:inline-block">
+            @Html.DisplayFor(model => model.SoLuongCon)
+        </h6>
+    </div>
+
+    <div>
+        <p style="display:inline-block; width:150px">
+            @Html.DisplayNameFor(model => model.Created_at)
+        </p>
+
+        <h6 style="display:inline-block">
+            @Html.DisplayFor(model => model.Created_at)
+        </h6>
+    </div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            MÔ TẢ SẢN PHẨM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Cập nhật", "UpdateProduct", new { maSanPham = Model.MaSP, maLoai = Model.MaLoai, tenSanPham = Model.TenSP, hinhAnh = Model.HinhSP, dvt = Model.DVT, trangThai = Model.MType, soLuong = Model.SoLuong, soLuongCon = Model.SoLuongCon, moTa = Model.Mota }) |
+    <a href="Index">Quay lại danh sách</a>
+</p>
+

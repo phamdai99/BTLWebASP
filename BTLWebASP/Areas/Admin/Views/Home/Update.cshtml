@@ -1,20 +1,16 @@
 ﻿@model IEnumerable<BTLWebASP.Models.SanPham>
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "UpdateProduct";
 }
 
 <table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>
-                Mã SP
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.MaLoai)
             </th>
             <th>
-                Tên SP
+                @Html.DisplayNameFor(model => model.TenSP)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.HinhSP)
@@ -23,26 +19,24 @@
                 @Html.DisplayNameFor(model => model.MType)
             </th>
             <th>
-                SL
+                @Html.DisplayNameFor(model => model.SoLuong)
             </th>
             <th>
-                SL Còn
+                @Html.DisplayNameFor(model => model.SoLuongCon)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Mota)
             </th>
             <th>
-                Chức năng
+                @Html.DisplayNameFor(model => model.Created_at)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaSP)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.MaLoai)
                 </td>
@@ -68,13 +62,13 @@
                     @{
                         string[] a = item.Mota.ToString().Split(new string[] { " " }, StringSplitOptions.None);
                         string tam = "";
-                        if (a.Length < 5)
+                        if (a.Length < 12)
                         {
                             tam = item.Mota;
                         }
                         else
                         {
-                            for (int i = 0; i < 5; i++)
+                            for (int i = 0; i < 7; i++)
                             {
                                 tam += a[i] + " ";
                             }
@@ -87,12 +81,21 @@
                     </div>
                 </td>
                 <td>
-                    @Html.ActionLink("Chi tiết", "Detail", new { maSP = item.MaSP })
+                    @Html.DisplayFor(modelItem => item.Created_at)
+                </td>
+                <td>
+                    @Html.ActionLink("Cập nhật", "UpdateProduct", new { maSanPham = item.MaSP, maLoai = item.MaLoai, tenSanPham = item.TenSP, hinhAnh = item.HinhSP, dvt = item.DVT, trangThai = item.MType, soLuong = item.SoLuong, soLuongCon = item.SoLuongCon, moTa = item.Mota })
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div>
+    <a href="Index">
+        Quay lại danh sách
+    </a>
+</div>
 
 @section scripts
 {
@@ -105,3 +108,4 @@
         });
     </script>
 }
+

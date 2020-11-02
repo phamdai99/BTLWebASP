@@ -1,0 +1,65 @@
+﻿@model BTLWebASP.Models.GiaBan
+@{
+    ViewBag.Title = "UpdateGiaBan";
+}
+
+<h4 style="margin-left:15px">CẬP NHẬT GIÁ BÁN</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaGB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="maGB" name="maGB" class="form-control" value="@Model.MaGB" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="maSP" name="maSP" class="form-control" value="@Model.MaSP" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="gia" name="gia" class="form-control" value="@Model.Gia" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayBD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="ngayBD" name="ngayBD" class="form-control" value="@Model.NgayBD" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayKT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="ngayKT" name="ngayKT" class="form-control" value="@Model.NgayKT" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input style="background-color:moccasin" name="call" type="submit" value="Cập nhật" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="margin-left:15px">
+    @Html.ActionLink("Quay lại danh sách", "Update")
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

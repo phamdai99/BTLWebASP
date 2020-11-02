@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="~/Assets/client/css/responsive.css" />
     <link rel="stylesheet" type="text/css" href="~/Assets/client/css/style_frm_dkdn.css" />
     <link rel="stylesheet" href="css/switcher.css">
-    <title>Eco Shop</title>
+    <title>Vetu Shop</title>
 </head>
 <body class="green">
     <!-- HEADER -->
@@ -28,23 +28,27 @@
         <div class="container main-header">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 logo">
-                    <a href="index.html"><img alt="Eco Shop" src="~/Assets/client/images/logo.png" /></a>
+                    <a href="index"><img style="height:75px" alt="Eco Shop" src="~/Assets/client/images/logo.png" /></a>
                 </div>
                 <div class="col-xs-4 col-sm-12 col-md-5 col-lg-4 header-search-box">
-                    <form class="form-inline">
+
+                    <form class="form-inline" action="searchProducts">
                         <div class="form-group input-serach">
-                            <input type="text" placeholder="Tìm Kiếm ...">
+                            <input type="text" name="keyword"  placeholder="Tìm Kiếm ...">
                         </div>
-                        <button type="submit" class="pull-right btn-search"><i class="fa fa-search"></i></button>
+
+                        <button type="submit" class="pull-right btn-search">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </form>
                 </div>
 
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 group-button-header">
-                    <a title="Compare" href="#" class="btn-compare">Compare</a>
-                    <a title="My wishlist" href="#" class="btn-heart">Heart</a>
+                    <a title="So sánh" href="#" class="btn-compare">Compare</a>
+                    <a title="Sản phẩm yêu thích" href="#" class="btn-heart">Heart</a>
 
                     <div class="btn-cart" id="cart-block">
-                        <a title="SignIn" href="" data-toggle="modal" data-target="#myModal">Log In</a>
+                        <a title="Đăng nhập" href="" data-toggle="modal" data-target="#myModal">Log In</a>
                     </div>
                 </div>
             </div>
@@ -110,7 +114,6 @@
         </div>
     </div>
     <!-- end header -->
-
     <!--SLIDER  AND CONTENT-->
     @RenderBody()
 
@@ -276,15 +279,15 @@
             <div id="introduce-box" class="row">
                 <div class="col-md-3">
                     <div id="address-box">
-                        <a href="#"><img src="~/Assets/client/images/logo.png" alt="logo" /></a>
+                        <a href="#"><img style="height:90px" src="~/Assets/client/images/logo.png" alt="logo" /></a>
 
                         <div id="address-list">
-                            <div class="tit-name">Address:</div>
-                            <div class="tit-contain">Đường 999 Le Van Hien , Huyện Ngu Hanh Son , Thành Phố Đà Nẵng, Vietnam.</div>
+                            <div class="tit-name">Địa chỉ:</div>
+                            <div class="tit-contain">Yên Phú Yên Mỹ Hưng Yên</div>
                             <div class="tit-name">Số điện thoại:</div>
-                            <div class="tit-contain">(+84) 3446.295</div>
+                            <div class="tit-contain">0923282242</div>
                             <div class="tit-name">Email:</div>
-                            <div class="tit-contain">ecoshop@gmail.com</div>
+                            <div class="tit-contain">daivetu@gmail.com</div>
                         </div>
                     </div>
                 </div>
@@ -295,11 +298,11 @@
                                 CHĂM SÓC KHÁCH HÀNG
                             </div>
                             <ul id="introduce-support" class="introduce-list">
-                                <li> Thứ Hai - Thứ Sáu: 7am to 8pm </li>
-                                <li>Thứ Bảy & Chủ nhật: 7am to 6pm</li>
+                                <li> Thứ Hai - Thứ Sáu: 7h sáng đến 8h chiều </li>
+                                <li>Thứ Bảy & Chủ nhật: 7h sáng đến 6h chiều</li>
                                 <li><a href="policy-faq.html">Làm thế nào để mua hàng</a></li>
                                 <li><a href="policy-faq.html">Cách thức thanh toán </a></li>
-                                <li><a href="policy-faq.html">FAQ</a></li>
+                                <li><a href="policy-faq.html">Câu hỏi thường gặp</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-6">
@@ -316,7 +319,7 @@
 
                 <div class="col-md-3">
                     <div id="contact-box">
-                        <div class="introduce-title">ĐĂNG KÝ VÀO BẢN TIN ECO SHOP</div>
+                        <div class="introduce-title">ĐĂNG KÝ VÀO BẢN TIN VETU SHOP</div>
                         <div class="input-group" id="mail-box">
                             <input type="text" placeholder="Địa chỉ email của bạn" />
                             <span class="input-group-btn">
@@ -349,7 +352,7 @@
 
 
             <div id="footer-menu-box">
-                <p class="text-center">Copyrights &#169; 2016 Eco Shop. All Rights Reserved.</p>
+                <p class="text-center">Developer &#169; by Đài Vetu</p>
             </div><!-- /#footer-menu-box -->
         </div>
     </footer>

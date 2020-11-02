@@ -1,0 +1,71 @@
+﻿@model  BTLWebASP.Models.GiaBan
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h4 style="margin-left:15px">THÊM GIÁ MỚI</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaGB, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" id="MaGB" name="MaGB" class="form-control"  />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaSP, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" id="MaSP" name="MaSP" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Gia, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" id="Gia" name="Gia" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NgayBD, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" id="NgayBD" name="NgayBD" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NgayKT, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" id="NgayKT" name="NgayKT" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input style="background-color:#4e73df; color:white" type="submit" name="cal" value="Thêm" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div style="margin-left:15px">
+    <a href="Index">
+        Quay lại danh sách
+    </a>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+

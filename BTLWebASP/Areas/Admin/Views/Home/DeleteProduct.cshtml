@@ -1,0 +1,91 @@
+﻿@model BTLWebASP.Models.SanPham
+
+@{
+    ViewBag.Title = "DeleteProduct";
+}
+
+@*<h2>Delete</h2>*@
+
+<h3>
+    Bạn có chắc chắn muốn xóa sản phẩm này không?
+</h3>
+<div>
+    @*<h4>SanPham</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongCon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongCon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_at)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input style="background-color:cadetblue" name="call" type="submit" value="Xóa sản phẩm" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại danh sách", "Index")
+        </div>
+    }
+</div>

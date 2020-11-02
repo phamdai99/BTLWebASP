@@ -1,0 +1,64 @@
+﻿@model BTLWebASP.Models.GiaBan
+
+@{
+    ViewBag.Title = "DeleteGiaBan";
+}
+
+<h3>
+    Bạn có chắc chắn muốn xóa giá bán này không?
+</h3>
+<div>
+    @*<h4>SanPham</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaGB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaGB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayBD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayBD)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayKT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayKT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input style="background-color:cadetblue" name="call" type="submit" value="Xóa giá bán" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại danh sách", "Index")
+        </div>
+    }
+</div>

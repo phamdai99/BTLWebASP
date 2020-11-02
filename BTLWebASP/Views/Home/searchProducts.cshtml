@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BTLWebASP.Models.SanPham>
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "searchProducts";
+}
+
+<div class="content-page">
+    <div class="container">
+        <div class="category-featured Vegetables">
+            <nav class="navbar nav-menu show-brand">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-brand"><a href="#"> <img alt="fashion" src="~/Assets/client/images/ic_search.png" /> Kết quả tìm kiếm </a></div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse">
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+
+            </nav>
+
+            <!--Danh sách sản phẩm mới nhất-->
+            <div class="product-featured clearfix">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="box-right">
+                            <ul class="product-list">
+                                @foreach (var item in Model)
+                                {
+                                    <li class="col-sm-4 product-item">
+                                        <div class="left-block">
+                                            <a>
+                                                @{
+                                                    string linkImgProduct = item.HinhSP + ".jpg";
+                                                }
+                                                <img class="img-responsive" alt="product"
+                                                     src="~/Assets/client/images/product/@linkImgProduct" />
+                                            </a>
+
+                                            <div class="quick-view">
+                                                <a title="Yêu thích" class="heart" href="#"></a>
+                                                <a title="Thêm vào để so sánh" class="compare" href="#"></a>
+                                                <a title="Xem lướt qua" href="~/Assets/client/images/product-detail/vegetables/spinach_600x600.jpg" class="search fancybox-button"></a>
+                                            </div>
+
+                                            <div class="add-to-cart">
+                                                <a class="add-item-to-cart" title="Add to Cart" href="#" data-name="Spinach - 1kg"
+                                                   data-price="55000" data-image="vegetables/spinach_300x300.jpg" data-product-code="SP109">Thêm vào giỏ hàng</a>
+                                            </div>
+                                            <div class="bestseller"></div>
+                                        </div>
+                                        <div class="right-block">
+                                            <h5 class="product-name"><a href="ProductDetail?maSP=@item.MaSP">@item.TenSP - @item.DVT</a></h5>
+                                            <div class="content_price">
+                                                    <span class="price product-price"><span style="color: black">Giá:</span> @string.Format("{0:0,0}" + "đ", @item.giaBans.GiaMoi)</span>
+                                                </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

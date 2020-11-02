@@ -11,6 +11,26 @@ namespace BTLWebASP.Models
     {
         dataconnection db = new dataconnection();
 
+        //lấy tất giá bán
+        public List<GiaBan> getAllGiaBan()
+        {
+            DataTable dt = db.layDeLieu("select * from GiaBan");
+            List<GiaBan> li = new List<GiaBan>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                GiaBan giaBan = new GiaBan();
+                giaBan.MaGB = dr[0].ToString();
+                giaBan.MaSP = dr[1].ToString();
+                giaBan.Gia = dr[2].ToString();
+                giaBan.NgayBD = DateTime.Parse(dr[4].ToString());
+                giaBan.NgayKT = DateTime.Parse(dr[5].ToString());
+
+                //giaBan.TenSP = (sp.MaSP);
+                li.Add(giaBan);
+            }
+            return li;
+        }
+
         //lấy giá bán theo mã sản phẩm
         public GiaBan getGiaBan(string maSp)
         {
@@ -76,6 +96,20 @@ namespace BTLWebASP.Models
             }
             size = li.Count;
             return size;
+        }
+
+        public void addGB(GiaBan item)
+        {
+            db.ghiDuLieu("INSERT INTO GiaBan (MaGB,MaSP,Gia,NgayBD,NgayKT) VALUES('" + item.MaGB + "','" + item.MaSP + "'," + item.Gia + ",'" + item.NgayBD + "','" + item.NgayKT + "');");
+        }
+        public void updateGB(GiaBan item)
+        {
+            db.ghiDuLieu("UPDATE GiaBan SET MaSP='" + item.MaSP + "',Gia='" + item.Gia + "',NgayBD='" + item.NgayBD + "',NgayKT='" + item.NgayKT + "' WHERE MaGB='" + item.MaGB + "'");
+        }
+
+        public void deleteGB(string MaGB)
+        {
+            db.ghiDuLieu("DELETE FROM GiaBan where MaGB='" + MaGB + "'");
         }
     }
 }

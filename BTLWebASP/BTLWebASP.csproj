@@ -142,7 +142,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\GiaBanController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaiHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="fonts\SanPham1.cs" />
     <Compile Include="Global.asax.cs">
@@ -153,6 +155,7 @@
     <Compile Include="Models\LoaiHang.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\GiaBanModel.cs" />
+    <Compile Include="Models\LoaiHangModel.cs" />
     <Compile Include="Models\SanPhamModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1941,6 +1944,7 @@
     <Content Include="Assets\client\images\icon_paper-plane.png" />
     <Content Include="Assets\client\images\icon_remove.png" />
     <Content Include="Assets\client\images\icon_vegetable.png" />
+    <Content Include="Assets\client\images\ic_search.png" />
     <Content Include="Assets\client\images\kak.png" />
     <Content Include="Assets\client\images\kak2.png" />
     <Content Include="Assets\client\images\kak3.png" />
@@ -1952,6 +1956,7 @@
     <Content Include="Assets\client\images\latest-deal-title.png" />
     <Content Include="Assets\client\images\list-view-bg.png" />
     <Content Include="Assets\client\images\logo.png" />
+    <Content Include="Assets\client\images\logo1.png" />
     <Content Include="Assets\client\images\log_fb.png" />
     <Content Include="Assets\client\images\log_gg.png" />
     <Content Include="Assets\client\images\news\health-new.jpg" />
@@ -2193,6 +2198,7 @@
     <Content Include="Assets\client\images\social\xing.png" />
     <Content Include="Assets\client\images\social\yahoo.png" />
     <Content Include="Assets\client\images\social\youtube.png" />
+    <Content Include="Assets\client\images\tải xuống.png" />
     <Content Include="Assets\client\images\up.png" />
     <Content Include="Assets\client\images\user-icon.png" />
     <Content Include="Assets\client\images\user.png" />
@@ -2479,7 +2485,24 @@
     <Content Include="Assets\admin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\admin\vendor\jquery\jquery.min.map" />
     <Content Include="Assets\admin\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="Areas\Admin\Views\Home\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\CreateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\UpdateProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\DeleteProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiHang\CreateLoaiHang.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiHang\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiHang\UpdateLoaiHang.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiHang\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiHang\DeleteLoaiHang.cshtml" />
+    <Content Include="Areas\Admin\Views\GiaBan\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\GiaBan\CreateGiaBan.cshtml" />
+    <Content Include="Areas\Admin\Views\GiaBan\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\GiaBan\UpdateGiaBan.cshtml" />
+    <Content Include="Areas\Admin\Views\GiaBan\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\GiaBan\DeleteGiaBan.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2508,6 +2531,7 @@
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
     <Content Include="Views\Home\ProductType.cshtml" />
+    <Content Include="Views\Home\searchProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,51 @@
+﻿@model BTLWebASP.Models.LoaiHang
+@{
+    ViewBag.Title = "UpdateLoaiHang";
+}
+
+<h4 style="margin-left:15px">CẬP NHẬT LOẠI HÀNG</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaLoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="maLoai" name="maLoai" class="form-control" value="@Model.MaLoai" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenLoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="tenLoai" name="tenLoai" class="form-control" value="@Model.TenLoai" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HinhLoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="hinhLoai" name="hinhLoai" class="form-control" value="@Model.HinhLoai" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input style="background-color:moccasin" name="call" type="submit" value="Cập nhật" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="margin-left:15px">
+    @Html.ActionLink("Quay lại danh sách", "Update")
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

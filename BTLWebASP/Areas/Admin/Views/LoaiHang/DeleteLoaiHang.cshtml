@@ -1,0 +1,59 @@
+﻿@model BTLWebASP.Models.LoaiHang
+
+@{
+    ViewBag.Title = "DeleteLoaiHang";
+}
+
+@*<h2>Delete</h2>*@
+
+<h3>
+    Bạn có chắc chắn muốn xóa loại hàng này không?
+</h3>
+<div>
+    @*<h4>SanPham</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_at)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input style="background-color:cadetblue" name="call" type="submit" value="Xóa loại hàng" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại danh sách", "Index")
+        </div>
+    }
+</div>
