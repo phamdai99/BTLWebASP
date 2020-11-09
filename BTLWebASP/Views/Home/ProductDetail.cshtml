@@ -72,11 +72,25 @@
                             <h1 class="product-name">@Model.TenSP</h1>
 
                             <div class="product-price-group">
-                                <span class="price product-price">
-                                    <span style="color: black">Giá:</span> @Model.giaBans.GiaMoi<span>đ</span>
-                                </span>
-                                <!--<span style="font-weight: bold">Price: </span><span class="old-price">30,000đ</span>
-                                <span class="discount">-30%</span>-->
+                                @if (Model.giaBans.GiaCu != 0)
+                                {
+                                    <span class="price product-price">
+                                        <span style="color: black">Giá tốt nhất:</span> @string.Format("{0:0,0}" + "đ", Model.giaBans.GiaMoi)
+                                    </span>
+
+                                    <span style="font-weight: bold">Giá: </span><span class="old-price">@string.Format("{0:0,0}" + "đ", Model.giaBans.GiaCu)</span>
+                                    double giaM = Model.giaBans.GiaMoi;
+                                    double giaC = Model.giaBans.GiaCu;
+                                    int discount = Convert.ToInt32(100 - (giaM / giaC * 100));
+                                    <span class="discount">-@discount%</span>
+                                }
+                                else
+                                {
+                                    <span class="price product-price">
+                                        <span style="color: black">Giá:</span> @string.Format("{0:0,0}" + "đ", Model.giaBans.GiaMoi)
+                                    </span>
+                                }
+
                             </div>
                             <div class="info-orther">
                                 <p>Mã sản phẩm: @Model.MaSP</p>

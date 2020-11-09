@@ -142,18 +142,37 @@ namespace BTLWebASP.Models
         public SanPham getDetailProduct(string id)
         {
             DataTable dt = db.layDeLieu("SELECT * FROM SanPham WHERE maSP='" + id + "'");
+            string masp = dt.Rows[0][0].ToString();
+            int sizeGB = giaBanModel.getSize(masp);
             SanPham sp = new SanPham();
-            sp.MaSP = dt.Rows[0][0].ToString();
-            sp.MaLoai = dt.Rows[0][1].ToString();
-            sp.TenSP = dt.Rows[0][2].ToString();
-            sp.HinhSP = dt.Rows[0][3].ToString();
-            sp.DVT = dt.Rows[0][4].ToString();
-            sp.MType = int.Parse(dt.Rows[0][5].ToString());
-            sp.SoLuong = int.Parse(dt.Rows[0][6].ToString());
-            sp.SoLuongCon = int.Parse(dt.Rows[0][7].ToString());
-            sp.Mota = dt.Rows[0][8].ToString();
-            sp.Created_at = DateTime.Parse(dt.Rows[0][9].ToString());
-            sp.giaBans = giaBanModel.getGiaBan(sp.MaSP);
+            if (sizeGB > 1)
+            {
+                sp.MaSP = dt.Rows[0][0].ToString();
+                sp.MaLoai = dt.Rows[0][1].ToString();
+                sp.TenSP = dt.Rows[0][2].ToString();
+                sp.HinhSP = dt.Rows[0][3].ToString();
+                sp.DVT = dt.Rows[0][4].ToString();
+                sp.MType = int.Parse(dt.Rows[0][5].ToString());
+                sp.SoLuong = int.Parse(dt.Rows[0][6].ToString());
+                sp.SoLuongCon = int.Parse(dt.Rows[0][7].ToString());
+                sp.Mota = dt.Rows[0][8].ToString();
+                sp.Created_at = DateTime.Parse(dt.Rows[0][9].ToString());
+                sp.giaBans = giaBanModel.getNewGiaBan(sp.MaSP);
+            }
+            else
+            {
+                sp.MaSP = dt.Rows[0][0].ToString();
+                sp.MaLoai = dt.Rows[0][1].ToString();
+                sp.TenSP = dt.Rows[0][2].ToString();
+                sp.HinhSP = dt.Rows[0][3].ToString();
+                sp.DVT = dt.Rows[0][4].ToString();
+                sp.MType = int.Parse(dt.Rows[0][5].ToString());
+                sp.SoLuong = int.Parse(dt.Rows[0][6].ToString());
+                sp.SoLuongCon = int.Parse(dt.Rows[0][7].ToString());
+                sp.Mota = dt.Rows[0][8].ToString();
+                sp.Created_at = DateTime.Parse(dt.Rows[0][9].ToString());
+                sp.giaBans = giaBanModel.getGiaBan(sp.MaSP);
+            }
             return sp;
         }
 
